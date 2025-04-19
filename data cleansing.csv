@@ -1,0 +1,15 @@
+df['Order Date'] = pd.to_datetime(df['Order Date'])
+df['Ship Date'] = pd.to_datetime(df['Ship Date'])
+
+# Extract time features
+df['Year'] = df['Order Date'].dt.year
+df['Month'] = df['Order Date'].dt.month_name()
+df['Month_Num'] = df['Order Date'].dt.month
+df['Quarter'] = df['Order Date'].dt.quarter
+df['Day'] = df['Order Date'].dt.day
+df['Weekday'] = df['Order Date'].dt.day_name()
+
+# Calculate profit margin
+df['Profit Margin'] = df['Profit'] / df['Sales']
+df['Profit Margin'] = df['Profit Margin'].replace([np.inf, -np.inf], np.nan)
+df['Profit Margin'] = df['Profit Margin'].fillna(0)
