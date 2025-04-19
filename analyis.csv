@@ -1,0 +1,16 @@
+
+top_products = df.groupby('Product Name')['Sales'].sum().sort_values(ascending=False).head(10)
+print("Top 10 Products by Sales:\n", top_products)
+
+
+region_sales = df.groupby('Region')['Sales'].sum().sort_values(ascending=False)
+print("\nSales by Region:\n", region_sales)
+
+
+monthly_sales = df.groupby(['Year', 'Month_Num', 'Month'])['Sales'].sum().reset_index()
+monthly_sales = monthly_sales.sort_values(by=['Year', 'Month_Num'])
+print("\nMonthly Sales Trend:\n", monthly_sales)
+
+
+cat_subcat = df.groupby(['Category', 'Sub-Category'])['Sales'].sum().sort_values(ascending=False)
+print("\nCategory vs Sub-Category Sales:\n", cat_subcat)
