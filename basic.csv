@@ -1,0 +1,11 @@
+# Basic inf
+print(df.info())
+
+# Summary stats
+print(df.describe())
+
+# Missing values check
+print(df.isnull().sum())
+
+# Column names
+print(df.columns)
